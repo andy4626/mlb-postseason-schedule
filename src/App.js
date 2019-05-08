@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import isEmpty from 'lodash/isEmpty';
-import Brackets from './brackets/index';
+
 import './App.css';
 
 class App extends Component {
@@ -58,6 +58,7 @@ class App extends Component {
     });
   }
 
+  // Function that return string that describes the series score
   seriesDescription = (seriesDescription = {}, series) => {
     const teamWins = {};
 
@@ -113,7 +114,6 @@ class App extends Component {
           save
         }
       } = indGame;
-      console.log('indGame', indGame);
 
       // Link helper functions
       function showTeamLink(team) {
@@ -128,6 +128,7 @@ class App extends Component {
         return 'https://www.mlbstatic.com/team-logos/' + teamId + '.svg';
       }
       // show the name of first TV broadcast within the array of broadcasts
+      // Wanted to show image of the TV broadcast, but couldn't find an API to do so
       const firstTVbroadCast = broadcasts.find((broadcast) => {return broadcast.type == 'TV'})
 
       return(
@@ -175,7 +176,6 @@ class App extends Component {
   }
 
   showCalendarView = () => {
-    const days_full = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const sortByDate = {};
     const totalGames = this.sortBySeries();
     totalGames.map((eachGame) => {
@@ -187,7 +187,6 @@ class App extends Component {
         sortByDate[game] = [eachGame];
       }
     })
-
 
     const result = Object.keys(sortByDate).map((indGameArr) => {
       const gameDate = new Date(indGameArr);
@@ -255,10 +254,10 @@ class App extends Component {
         </nav>
         {this.displayToggleButton()}
         <section className="App-intro">
-          {this.state.view === 'date' // CHANGE HERE
+          {this.state.view === 'date'
             && this.showCalendarView()
           }
-          {this.state.view === 'round' // CHANGE HERE
+          {this.state.view === 'round'
             && this.showRoundView()
           }
         </section>
