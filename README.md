@@ -1,4 +1,4 @@
-#MLB 2018 Postseason Schedule Project
+# MLB 2018 Postseason Schedule Project
 
 This project will sort the 2018 MLB Postseason games by date and by series.
 
